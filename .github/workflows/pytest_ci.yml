@@ -25,5 +25,12 @@ jobs:
           pip install pytest pytest-html requests
 
       - name: Run tests and generate report
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          pytest tests/ --html=reports/html_reports/ci_report.html --self-contained-html
+          mkdir -p configs
+          mkdir -p reports/html_reports
+          echo "gemini:" > configs/config.yaml
+          echo "  api_key: '${GEMINI_API_KEY}'" >> configs/config.yaml
+          echo "  model: 'models/gemini-2.5-flash'" >> configs/config.yaml
+          pytest tests/ --html=reports/html_reports/ci_report.html --self-contained-html -v
