@@ -1,0 +1,7 @@
+{
+  "prompts": [
+    "List three key differences between manual QA and AI QA.",
+    "Explain why observability is critical in LLM evaluation.",
+    "Write a JSON test plan structure for validating AI responses."
+  ]
+}
